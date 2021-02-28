@@ -1,0 +1,50 @@
+Name:    Stephen McGruer
+Matric:  0840449
+
+This file is a README for my submission for the COMN Coursework. It
+describes how to run my submission and where the results/etc can be
+found.
+
+#####################
+Building the project.
+#####################
+
+The project is pre-compiled, and all .class files can be found in 
+./bin. Should you wish to re-compile the source files, or re-generate
+the Javadoc, an ant build file is provided. Running "ant" will both
+compile the java code and create the javadoc. Running "ant compile"
+will only compile the java code. Running "ant javadoc" will only
+create the javadoc. Finally, running "ant clean" will remove all
+class files from the ./bin folder.
+
+####################
+Running the project.
+####################
+
+If the ./bin folder is in your classpath then the code can be run as
+specified in the coursework - i.e. "java SenderX localhost <Port> 
+<Filename> [WindowSize]". There are also two shell scripts provided - 
+sender.sh and receiver.sh which should allow you to run any of the
+sender/receivers by passing in a number from 1-4 and then the program 
+arguments as normal:
+
+./sender.sh 4 localhost 9999 testfiles/cwk_testfile.jpg 256
+
+For setting up the dummynet ipfw there are four scripts, all named
+similarly - stepXNetwork.sh. step3Network requires an additional 
+argument for the delay.
+
+########
+Javadoc.
+########
+
+All files are fully documented using Javadoc, the index file for which
+can be found at ./docs/index.html. Javadoc can be re-generated using
+"ant javadoc".
+
+#################
+Results PDF File.
+#################
+
+The file containing the results of my experiments can be found in ./results.
+It is in PDF format and should be readable by Adobe PDF Reader or Evince.

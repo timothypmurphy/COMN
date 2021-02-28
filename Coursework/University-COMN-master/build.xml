@@ -1,0 +1,46 @@
+<project name="COMN" default="build" basedir=".">
+	
+	<property environment="env" />
+	
+	<property name="src" location="src" />
+	<property name="bin" location="bin" />
+	<property name="doc" location="doc" />
+
+	<!-- Builds the project and the javadocs -->
+	<target name="build" description="Compile the project and generate javadoc.">
+		<mkdir dir="${bin}"/>
+		<mkdir dir="${doc}"/>
+		<javac srcdir="${src}" destdir="${bin}" fork="yes" optimize="on" debug="on" source="1.5" target="1.5" includeantruntime="false"/>
+		<javadoc destdir="${doc}" additionalparam="-J-Dorg.apache.commons.attributes.javadoc.CATaglet.sources=${basedir}">
+			<taglet name="org.apache.commons.attributes.javadoc.CATaglet" path="${basedir}/thirdparty/commons-attributes-compiler-2.2.jar"/>
+			<fileset dir="${basedir}/" includes="**/*.java"/>
+		</javadoc>
+	</target>
+	
+	<!-- Just builds the project -->
+	<target name="compile" description="Compile the project.">
+		<mkdir dir="${bin}"/>	
+		<javac srcdir="${src}" destdir="${bin}" fork="yes" optimize="on" debug="on" source="1.5" target="1.5" includeantruntime="false"/>
+	</target>
+	
+	<!-- Just generates Javadoc -->
+	<target name="javadoc" description="Generate javadoc for the project.">
+		<mkdir dir="${doc}"/>
+		<javadoc destdir="${doc}" additionalparam="-J-Dorg.apache.commons.attributes.javadoc.CATaglet.sources=${basedir}">
+			<taglet name="org.apache.commons.attributes.javadoc.CATaglet" path="${basedir}/thirdparty/commons-attributes-compiler-2.2.jar"/>
+			<fileset dir="${basedir}/" includes="**/*.java"/>
+		</javadoc>
+	</target>
+	
+	<!-- deletes class files -->
+	<target name="clean" description="clean up all generated files">
+		<delete>
+			<fileset dir="${bin}">
+				<include name="**/*.class"/>
+				<include name="**/*.png"/>
+				<include name="**/*.gif"/>
+			</fileset>
+		</delete>
+	</target>
+
+</project>
